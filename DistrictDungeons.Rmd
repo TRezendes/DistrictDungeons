@@ -1,0 +1,91 @@
+---
+title: "District Dungeons"
+output: html_document
+date: "2023-11-25"
+---
+
+
+Install packages as needed:
+
+```{r echo=FALSE message=FALSE}
+install.packages("tidyverse")
+install.packages("sf")
+install.packages("ggpubr")
+install.packages("png")
+install.packages("jpeg")
+install.packages("ggpattern")
+install.packages("magick")
+install.packages("jsonlite")
+```
+
+
+```{r echo=FALSE message=FALSE}
+library(tidyverse)
+library(sf)
+library(ggpubr)
+library(png)
+library(jpeg)
+library(ggpattern)
+library(magick)
+library(jsonlite)
+```
+
+
+The script starts by checking for all available district geometries and then eliminates duplicates, removing all but the most recent version of the district.
+
+```{r}
+a <- data.frame(url=character())
+
+directories <- fromJSON("https://api.github.com/repositories/15808774/contents/cds")[["url"]]
+
+for (dir in directories) {
+  b <- fromJSON(dir)["url"]
+  a <- rbind(a, b)
+}
+
+district <- a[["url"]] %>% str_split_i("/", -1) %>% str_split_i("[?]", 1)
+year <- a[["url"]] %>% str_split_i("/", -2)
+jsonURL <- paste("https://theunitedstates.io/districts/cds", year, district, "shape.geojson", sep="/")
+
+a["year"] <- year
+a["district"] <- district
+a["jsonURL"] <- jsonURL
+
+districts <- a %>% group_by(district) %>% filter(year==max(year)) %>% ungroup() %>% select("jsonURL", "district")
+
+#districts
+```
+
+
+By default, this script saves images for all 400+ district geometries available from <https://theunitedstates.io> as .png images with a resolution of 320 ppi. To adjust the image resolution, change the `dpi` argument of the `ggsave` function. Valid values for dpi include numbers and the strings "retina" (320), "print" (300), and "screen" (72).
+
+```{r}
+for (dist in districts[["jsonURL"]]) {
+
+  names <- districts %>% filter(jsonURL==dist)
+  name <- names[["district"]]
+  filename <- paste(name, ".png", sep="")
+
+  map <- read_sf(dist)
+  background <- readJPEG("images/dirt.jpg")
+  tiles <- "images/tiles.png"
+
+  ggplot(map) +
+    background_image(background) +
+    geom_sf_pattern(
+      aes(),
+      pattern          = 'image',
+      pattern_filename = tiles,
+      pattern_type     = 'tile',
+      pattern_scale=.75
+    ) +
+    theme(
+      axis.text.x=element_blank(), #remove x axis labels
+      axis.ticks.x=element_blank(), #remove x axis ticks
+      axis.text.y=element_blank(),  #remove y axis labels
+      axis.ticks.y=element_blank()  #remove y axis ticks
+    )
+
+  ggsave(filename, path="output", dpi="retina")
+}
+```
