@@ -1,0 +1,3 @@
+# Github linguist language detection overrides
+*.qmd linguist-detectable # Add .qmd files to GitHub repo language statistics
+*.Rmd linguist-detectable # Add .Rmd files to GitHub repo language statistics
