@@ -2,7 +2,6 @@
 title: "District Dungeons"
 output: html_document
 date: "2023-11-25"
-version: 1.0
 ---
 
 

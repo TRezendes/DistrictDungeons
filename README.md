@@ -35,3 +35,6 @@ Allowing the script to generate all possible images at the default size and reso
 - Tile image from <http://free-dungeon-tiles-to-print.blogspot.com>: <http://4.bp.blogspot.com/-vM-JZkTyE8w/VlNlEDdIz5I/AAAAAAAAEj8/oNyNWnfqEgk/s1600/RoomFlag_DFP1_1stEd.png>
     - [Creative Commons Attribution-Share Alike 3.0 License](https://creativecommons.org/licenses/by-sa/3.0/)
 
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FTRezendes%2FDistrictDungeons%2Fmain%2Fmetadata.json&query=%24.version&style=flat&label=version&color=%23D60270)
+
+![GitHub License](https://img.shields.io/github/license/TRezendes/DistrictDungeons?style=flat&color=%230038A8)
