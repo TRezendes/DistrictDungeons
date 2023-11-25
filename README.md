@@ -6,11 +6,21 @@ Inspired by [a Tweet by Zach Silberberg](https://x.com/zachsilberberg/status/152
 
 Four districts from the Ranker.com article [The Most Gerrymandered Districts In America](https://www.ranker.com/list/most-gerrymandered-districts-in-america/eric-vega) as dungeons.
 
-![Maryland 3](images/examples/MD-3.png "A D&D dungeon in the shape of Maryland's 3rd US congressional district.") ![Illinois 4](images/examples/IL-4.png "A D&D dungeon in the shape of Illinois's 4th US congressional district.")
+[![Maryland 3](images/examples/MD-3.png "A D&D dungeon in the shape of Maryland's 3rd US congressional district.")](images/examples/MD-3_800.png)
+<br />[Maryland 3](https://en.wikipedia.org/wiki/Maryland%27s_3rd_congressional_district)
 
-![Ohio 11](images/examples/OH-11.png "A D&D dungeon in the shape of Ohio's 11th US congressional district.") ![Texas 33](images/examples/TX-33.png "A D&D dungeon in the shape of Texas's 33rd US congressional district.")
+[![Illinois 4](images/examples/IL-4.png "A D&D dungeon in the shape of Illinois's 4th US congressional district.")](images/examples/IL-4_800.png)
+<br />[Illinois 4](https://en.wikipedia.org/wiki/Illinois%27s_4th_congressional_district)
+
+[![Ohio 11](images/examples/OH-11.png "A D&D dungeon in the shape of Ohio's 11th US congressional district.")](images/examples/OH-11_800.png)
+<br />[Ohio 11](https://en.wikipedia.org/wiki/Ohio%27s_11th_congressional_district)
+
+[![Texas 33](images/examples/TX-33.png "A D&D dungeon in the shape of Texas's 33rd US congressional district.")](TX-33.png)
+<br />[Texas 33](https://en.wikipedia.org/wiki/Texas%27s_33rd_congressional_district)
 
 ## Details
+
+No attempt has been made to make the output into actual, useable dungeons. Notice, for instance, in the Illinois 4 map above, if the squares are 5 feet, then one section of the map is no wider than an arrow slit. But perhaps you can use them as inspiration.
 
 By default, this script saves images for all 400+ district geometries available from <https://theunitedstates.io> as .png images with a resolution of 320 ppi. To adjust the image resolution, change the `dpi` argument of the `ggsave` function. Valid values for dpi include numbers and the strings "retina" (320), "print" (300), and "screen" (72).
 
